@@ -33,7 +33,7 @@ def get_connection():
 def sync_all_items():
     # sync erpnext items to WooCommerce product
     for d in frappe.db.get_all("Item"):
-        # on_update_item(frappe.get_doc("Item", d))
+        on_update_item(frappe.get_doc("Item", d))
         frappe.enqueue(on_update_item, doc=frappe.get_doc("Item", d))
         print("updated %s" % d)
 
